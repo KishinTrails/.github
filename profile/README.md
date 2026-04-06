@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="logo.png" alt="Kishin Logo" width="200"/>
+  <img src="logo.png" alt="Kishin Trails Logo" width="200"/>
 </p>
 
-# Kishin
+# Kishin Trails
 
 ## ⚠️ WARNING: Under Heavy Development ⚠️
 
 **This project is currently under active and heavy development. It is NOT ready for general use and may contain bugs, incomplete features, or breaking changes. Use at your own risk.**
 
-Kishin is a mobile-first application for exploring and tracking hiking trails with fog-of-war exploration mechanics. It provides an interactive map interface for discovering points of interest while tracking your explored areas using H3 geospatial indexing.
+Kishin Trails is a mobile-first application for exploring and tracking hiking trails with fog-of-war exploration mechanics. It provides an interactive map interface for discovering points of interest while tracking your explored areas using H3 geospatial indexing.
 
 ---
 
@@ -42,14 +42,14 @@ Kishin is a mobile-first application for exploring and tracking hiking trails wi
 
 ## 📂 Projects
 
-- [Kishin Frontend](https://github.com/KishinTrails/kishin-frontend) — Mobile-first Vue 3 application with Ionic UI
-- [Kishin API](https://github.com/KishinTrails/kishin-api) — FastAPI backend for OSM data and geo-spatial operations
+- [Kishin Trails Frontend](https://github.com/KishinTrails/kishin-frontend) — Mobile-first Vue 3 application with Ionic UI
+- [Kishin Trails API](https://github.com/KishinTrails/kishin-api) — FastAPI backend for OSM data and geo-spatial operations
 
 ---
 
 ## 🧪 Quality and Testing
 
-Kishin uses **AI-assisted development** tools to accelerate coding, followed by **human validation** and **automated tests** for correctness.
+Kishin Trails uses **AI-assisted development** tools to accelerate coding, followed by **human validation** and **automated tests** for correctness.
 
 **Frontend Testing:**
 - Vitest for unit tests
