@@ -47,6 +47,12 @@ Kishin Trails is a mobile-first application for exploring and tracking hiking tr
 
 ---
 
+## CHANGELOG
+
+- [CHANGELOG](CHANGELOG.md)
+
+---
+
 ## 🧪 Quality and Testing
 
 Kishin Trails uses **AI-assisted development** tools to accelerate coding, followed by **human validation** and **automated tests** for correctness.
