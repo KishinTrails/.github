@@ -4,6 +4,60 @@ All notable changes to the Kishin Trails project will be documented in this file
 
 ---
 
+## [0.2.0] - 2026-05-31 - "The Exploration Update"
+
+### 💥 Breaking Changes
+
+- Replaced H3 hexagonal cell indexing with **Google's S2 geometry library** across both frontend and backend. All cell identifiers are now S2 hex token strings (e.g., `89c25a221`). Existing explored-cell records using H3 IDs are incompatible.
+
+### ✨ Added
+
+#### Frontend
+- `s2Utils` library for S2 cell ↔ lat/lon conversion and cell boundary polygon generation
+- Android GPS tracking now works when the screen is off (Capacitor background location)
+- Android app streams newly explored S2 cells to the backend in real time
+
+#### Backend
+- `POST /trails/explored` endpoint to record a newly explored S2 cell
+- Docker image with full CI/CD deployment pipeline
+
+### 🔄 Changed
+
+#### Frontend
+- Fog overlay, POI overlay, Perlin noise overlay, and tile selection all migrated to S2
+- Wake lock replaced with Fused Location Provider (FLP)-managed CPU waking for better battery life
+- Location update intervals split between foreground and background modes
+- `updateVisibleCells` skipped while in active explore mode to reduce redundant redraws
+- Professional TSDoc docstrings added across all service, composable, utility, and plugin files
+
+#### Backend
+- Full S2 migration across all modules: cache, Overpass queries, trails router, `import_gpx`, `debug_geo`, `find_perlin_params`
+
+### 🐛 Fixed
+
+#### Frontend
+- `PoiOverlay` now handles invalid S2 cell IDs gracefully
+- Removed duplicate `cellFromLatLng` definition in `s2Utils`
+- Corrected Android Kotlin package declarations
+
+#### Backend
+- Inverted lat/lng in Overpass API response parsing
+- Inverted coordinates in cell-from-polygon S2 computation
+- CORS configuration not applied correctly on startup
+- Multiple cell conditions not handled correctly in `find_perlin_params`
+
+### 🧪 Testing
+
+#### Backend
+- Updated test suite for S2 cell identifiers (trails, cache idempotency, S2 utilities)
+
+### 📝 Notes
+
+- S2 cells are always stored and transmitted as hexadecimal token strings, never as raw `uint64` IDs
+- The Docker image pins `s2geometry` from source (no PyPI release) — build times are longer than typical Python images
+
+---
+
 ## [0.1.0] - 2026-04-06 - "The Visualization Update"
 
 ### ✨ Added

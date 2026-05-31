@@ -8,7 +8,7 @@
 
 **This project is currently under active and heavy development. It is NOT ready for general use and may contain bugs, incomplete features, or breaking changes. Use at your own risk.**
 
-Kishin Trails is a mobile-first application for exploring and tracking hiking trails with fog-of-war exploration mechanics. It provides an interactive map interface for discovering points of interest while tracking your explored areas using H3 geospatial indexing.
+Kishin Trails is a mobile-first application for exploring and tracking hiking trails with fog-of-war exploration mechanics. It provides an interactive map interface for discovering points of interest while tracking your explored areas using S2 geospatial indexing.
 
 ---
 
@@ -17,7 +17,7 @@ Kishin Trails is a mobile-first application for exploring and tracking hiking tr
 - **Interactive Map**  
   MapLibre GL-based map with OpenStreetMap tiles for smooth navigation
 - **Fog of War**  
-  Track explored areas with H3 geospatial indexing (Uber's hexagonal spatial index)
+  Track explored areas with S2 geospatial indexing (Google's S2 geometry library)
 - **POI Markers**  
   Display points of interest including peaks, natural areas, and industrial zones
 - **Authentication**  
