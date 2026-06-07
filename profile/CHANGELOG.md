@@ -4,6 +4,25 @@ All notable changes to the Kishin Trails project will be documented in this file
 
 ---
 
+## [0.2.1] - 2026-06-07 - "The Beautify Mini-Update"
+
+### ✨ Added
+
+#### Frontend
+- `mapStyleService` — persists the chosen map style to `localStorage` and exposes a shared `styleToThemeClass()` helper used by both the map and login pages
+- Collapsible controls panel: hidden by default on mobile viewports (<768 px), with a floating `☰` toggle button and an in-panel `✕` close button
+- Login page now reads the stored map style on mount and applies the matching theme
+
+### 🔄 Changed
+
+#### Frontend
+- Map style selector replaced with a `<select>` dropdown (was radio buttons)
+- Controls panel restyled using CSS custom properties organised into `theme-standard` and `theme-ukiyo` token sets, so the panel colours update automatically when the map style changes
+- Ukiyo-e Toner is now the default map style (persisted across sessions)
+- `initMap` now reads `STYLE_MAP[mapStyle]` instead of hardcoding `STANDARD_STYLE`, so the correct tiles load on first render
+
+---
+
 ## [0.2.0] - 2026-05-31 - "The Exploration Update"
 
 ### 💥 Breaking Changes
