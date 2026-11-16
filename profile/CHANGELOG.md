@@ -4,6 +4,58 @@ All notable changes to the Kishin Trails project will be documented in this file
 
 ---
 
+## [0.3.0] - 2026-11-16 - "The Athlete Update"
+
+### 💥 Breaking Changes
+
+#### Backend
+- The game database is on **PostgreSQL**. `DATABASE_URL` has no default; `kishin db copy-from-sqlite FILE` copies the database of an earlier version, once
+- A **single account**, configured by `KISHIN_USERNAME` and `KISHIN_PASSWORD_HASH` (written by `kishin password`); the users table and registration are gone. A password needs at least 12 characters
+- `SECRET_KEY` has no default and needs at least 32 characters. The server refuses to start while a required setting is missing
+- Images are published only for a tag `vX.Y.Z` matching `pyproject.toml` (`release.yaml`), no longer for every push to `main`
+
+#### Frontend
+- The map opens at `VITE_DEFAULT_CENTER_LAT` / `VITE_DEFAULT_CENTER_LON`, central Paris when they are not set
+
+### ✨ Added
+
+#### Backend
+- `/athlete` routes: Garmin activities (daily totals, GPS track, records) and Withings measurements, read-only from health-sync's database
+- `/plan` routes and `kishin plan`: training plans imported from a JSON file, weekly progression, completion of a training by a Garmin run
+- `kishin` CLI: password, database, GPX import, POI cache, training plans, health data queries (including Willpower), geo and noise debugging, and `kishin run`
+- Login throttling (429 after `LOGIN_MAX_ATTEMPTS` attempts within `LOGIN_INTERVAL` seconds); a token is refused once the password changes; `EXPOSE_DOCS` turns off the API documentation
+- Settings can be read from files in `/run/secrets` (or `dev-secrets/` locally)
+
+#### Frontend
+- Top bar with Map / Athlete / Plan tabs, a bottom tab bar on phones, and breadcrumbs
+- Athlete pages: Overview (activity calendar, weekly distance and moving time), Body (measurements), Activities (list, and each activity with its map, charts, laps and links to the previous and next one)
+- Training plan page: overall and per-type progress, a week navigator, run completion with an RPE slider, a seal on done trainings, and the list of weeks
+- Map panel in foldable groups (closed on phones), with a Tracking group: Start/Stop, fix accuracy and age, "Center on me"
+- Toasts and Android vibration after a save, pull to refresh, loading placeholders
+- New logo, favicon and Android launcher icons
+- Content Security Policy in production builds
+
+### 🔄 Changed
+
+#### Backend
+- Tests run against a throwaway PostgreSQL container (testcontainers)
+- `s2geometry` comes from PyPI
+
+#### Frontend
+- GPS tracking starts from the Start button only, and needs a login valid for 24 more hours
+- A token the API refuses leads back to the login page
+- Android: no cleartext HTTP, no app backup; the version comes from `package.json`
+- A tap on the map closes the panel on phones
+
+### 🐛 Fixed
+
+#### Frontend
+- Fog and POI layers wait for the map style to load ("Style is not done loading")
+- No tracking start, and no error, in a browser
+- The focus leaves the clicked link after a page change, so the previous page can be hidden from assistive technology
+
+---
+
 ## [0.2.1] - 2026-06-07 - "The Beautify Mini-Update"
 
 ### ✨ Added
